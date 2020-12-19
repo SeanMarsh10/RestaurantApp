@@ -29,7 +29,7 @@ namespace RestaurantApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("LogIn");
         }
 
         public IActionResult LogIn()
