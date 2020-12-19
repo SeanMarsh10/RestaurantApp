@@ -18,12 +18,12 @@ namespace RestaurantApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> log;
         private UserDataHelper userDataHelper;
 
         public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger;
+            log = logger;
             userDataHelper = new UserDataHelper();
         }
 
@@ -40,16 +40,16 @@ namespace RestaurantApp.Controllers
         [HttpPost]
         public IActionResult LogInAuthentication(string password)
         {
-            _logger.LogInformation("Logging in user {0}", password);
+            log.LogInformation("Logging in user {0}", password);
             var userEntity = userDataHelper.GetUserData(password);
             if (userEntity == null)
             {
-                _logger.LogInformation("Log in failed for password {0}", password);
+                log.LogInformation("Log in failed for password {0}", password);
                 return Json(new { success = false });
             }
             else
             {
-                _logger.LogInformation("Log in success for user {0}", userEntity.UserName);
+                log.LogInformation("Log in success for user {0}", userEntity.UserName);
                 TempData[SessionConstants.USER_INFORMATION] = userEntity.UserName;
                 return Json(new { success = true });
             }

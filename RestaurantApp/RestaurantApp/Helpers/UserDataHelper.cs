@@ -14,7 +14,7 @@ namespace RestaurantApp.Helpers
     {
         private ISession session;
         private const string passwordRegexPatter = "[0-9]{4}";
-        private readonly ILogger<UserDataHelper> logger;
+        private readonly ILogger<UserDataHelper> log;
 
         public UserDataHelper()
         {
@@ -47,7 +47,6 @@ namespace RestaurantApp.Helpers
             }
             try
             {
-                logger.LogInformation("Adding user {0} to the database", userName);
                 var userData = new UserEntity()
                 {
                     UserName = userName,
@@ -60,10 +59,16 @@ namespace RestaurantApp.Helpers
             }
             catch(Exception e)
             {
-                logger.LogError("Error {0} adding user {0} to database", e, userName);
+                log.LogError("Error {0} adding user {0} to database", e, userName);
                 return false;
             }
             return true;
+        }
+
+        public bool CheckIfUserExists(string userName, string password)
+        {
+            return session.Query<UserEntity>().Where(x => x.UserName == userName ||
+                                                     x.Passsword == password).Any();
         }
 
         private bool ValidatePassword(string password)
