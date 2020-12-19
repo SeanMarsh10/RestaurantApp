@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <link rel="stylesheet" href="~/css/LogIn.css" type="text/css" />
+</head>
+
+<h1>Log In</h1>
+<body onload="emptyCode();">
+    <form method="post">
+        <table id="keypad" cellpadding="5" cellspacing="3">
+            <tr>
+                <td onclick="addCode('1');">1</td>
+                <td onclick="addCode('2');">2</td>
+                <td onclick="addCode('3');">3</td>
+            </tr>
+            <tr>
+                <td onclick="addCode('4');">4</td>
+                <td onclick="addCode('5');">5</td>
+                <td onclick="addCode('6');">6</td>
+            </tr>
+            <tr>
+                <td onclick="addCode('7');">7</td>
+                <td onclick="addCode('8');">8</td>
+                <td onclick="addCode('9');">9</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td onclick="addCode('0');">0</td>
+                <td></td>
+            </tr>
+        </table>
+        <input type="text" name="code" value="" maxlength="4" class="display" readonly="readonly" onfocus="showKeys()" />
+    </form>
+    <button id="ClearButton" onclick="emptyCode();">Clear</button>
+    <button id="SubmitButton" onclick="logIn();">Submit</button>
+</body>
+
+<script>
+    function showKeys() {
+        document.getElementById("keypad").style.visibility = "visible";
+    }
+    function addCode(key) {
+        var code = document.forms[0].code;
+        if (code.value.length < 4) {
+            code.value = code.value + key;
+        }
+        if (code.value.length == 4) {
+        }
+    }
+
+    function emptyCode() {
+        document.forms[0].code.value = "";
+        return;
+    }
+
+    function logIn() {
+        var password = document.forms[0].code.value;
+        if (password.length < 4) {
+            alert("Password too short");
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("LogInAuthentication", "Home")',
+            data: {
+                password: password
+            },
+            success: function (data) {
+                if (data.success) {
+                    window.location.href = '@Url.Action("Index", "Home")';
+                }
+                else {
+                    alert("Password did not match");
+                }
+            },
+            error: function (data) {
+                alert("Error");
+            },
+        });
+    }
+</script>
