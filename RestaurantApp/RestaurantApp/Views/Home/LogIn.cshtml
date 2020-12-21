@@ -8,6 +8,7 @@
 <h1>Log In</h1>
 <body onload="emptyCode();">
     <form method="post">
+        <input type="text" name="code" value="" maxlength="4" class="display" readonly="readonly" onfocus="showKeys()" />
         <table id="keypad" cellpadding="5" cellspacing="3">
             <tr>
                 <td onclick="addCode('1');">1</td>
@@ -30,7 +31,6 @@
                 <td></td>
             </tr>
         </table>
-        <input type="text" name="code" value="" maxlength="4" class="display" readonly="readonly" onfocus="showKeys()" />
     </form>
     <button id="ClearButton" onclick="emptyCode();">Clear</button>
     <button id="SubmitButton" onclick="logIn();">Submit</button>

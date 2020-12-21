@@ -4,24 +4,26 @@
 
 <div id="app">
     <h3>Create Account</h3>
+    <form>
+        <div class="input">
+            User Name
+            <input v-on:input="onUserInput" />
+            <div id="Error">
+                {{ errorMessage }}
+            </div>
+        </div>
+        <div class="input">
+            Password
+            <input v-on:input="onInput" />
+            <div id="Error">
+                {{numberErrorMessage}}
+            </div>
+        </div>
+    </form>
     <div>
-        User Name
-        <input v-on:input="onUserInput" />
-    </div>
-    <div>
-        Password
-        <input v-on:input="onInput" />
-    </div>
-    <div>
-        <button v-on:click="submit">
+        <button id="submitButton" v-on:click="submit">
             submit
         </button>
-    </div>
-    <div id="Error">
-        {{ errorMessage }}
-    </div>
-    <div id="Error">
-        {{numberErrorMessage}}
     </div>
 </div>
 
@@ -38,8 +40,10 @@
         },
         computed: {
             errorMessage: function () {
-                if (this.textInput.length != 4 || this.userNameText.length < 6) {
-                    return this.errorOutput = "Password or username have incorrect length";
+                let userNameFomratCheck = /[a-zA-Z]/.test(this.userNameText);
+                if (!userNameFomratCheck || this.userNameText.length < 6 ||
+                    this.userNameText.length > 19) {
+                    return this.errorOutput = "Username must be at least 6 characters and no more than 19 and contain only letters";
                 }
                 else {
                     this.longEnough = true;
@@ -47,8 +51,8 @@
             },
             numberErrorMessage: function () {
                 let isNum = /[0 - 9]*/.test(parseInt(this.textInput));
-                if (!isNum) {
-                    return this.numberErrorOutput = "password must be numbers only";
+                if (!isNum || this.textInput.length != 4) {
+                    return this.numberErrorOutput = "password must be four digits long and only contain numbers";
                 }
                 else {
                     this.allNumbers = true;

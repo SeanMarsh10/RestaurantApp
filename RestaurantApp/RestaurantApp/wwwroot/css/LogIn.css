@@ -5,7 +5,25 @@
 #keypad {
     margin: auto;
     margin-top: 20px;
-    visibility: visible
+    visibility: visible;
+    width: 33%;
+    height: 400px;
+    border-style: hidden;
+}
+
+
+button {
+    width: 20%;
+    height: 40px;
+    margin: 20px 0px 0px 5px;
+    background-color: #e7e7e7;
+    color: black;
+    border-style: hidden;
+}
+
+input{
+    border-style: hidden;
+    text-align: center;
 }
 
     #keypad tr td {
@@ -14,11 +32,12 @@
         border: 1px solid #000000;
         font-size: 18px;
         font-weight: bold;
-        width: 40px;
-        height: 30px;
+        width: 60px;
+        height: 50px;
         cursor: pointer;
-        background-color: #666666;
-        color: #CCCCCC;
+        background-color: #005faf;
+        color: white;
+        opacity: 0.5;
     }
 
         #keypad tr td:hover {
