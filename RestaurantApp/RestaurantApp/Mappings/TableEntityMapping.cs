@@ -10,6 +10,7 @@ namespace RestaurantApp.Mappings
             Id(x => x.Id, "table_id");
             Map(x => x.MaxSeats, "max_seats");
             Map(x => x.Number, "table_number");
+            Table("tables");
         }
     }
 }
