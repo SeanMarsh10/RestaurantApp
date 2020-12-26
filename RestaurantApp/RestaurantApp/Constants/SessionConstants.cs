@@ -8,5 +8,7 @@ namespace RestaurantApp.Constants
     public static class SessionConstants
     {
         public static string USER_INFORMATION = "UserInformation";
+
+        public static string TABLE_INFORMATION = "Table";
     }
 }
