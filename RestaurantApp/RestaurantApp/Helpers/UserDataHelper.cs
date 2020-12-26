@@ -10,15 +10,13 @@ using System.Threading.Tasks;
 
 namespace RestaurantApp.Helpers
 {
-    public class UserDataHelper
+    public class UserDataHelper : DataHelperBase
     {
-        private ISession session;
         private const string passwordRegexPatter = "[0-9]{4}";
         private readonly ILogger<UserDataHelper> log;
 
-        public UserDataHelper()
+        public UserDataHelper() : base()
         {
-            session = new UnitOfWork().OpenSession();
         }
 
         public bool MatchPasswordWithUserName(string password, UserEntity user)
@@ -28,9 +26,9 @@ namespace RestaurantApp.Helpers
 
         public UserEntity GetUserData(string password)
         {
-            var userData = session.Query<UserEntity>()
-                                  .Where(x => x.Passsword == password)
-                                  .FirstOrDefault();
+            var userData =  session.Query<UserEntity>()
+                                   .Where(x => x.Passsword == password)
+                                   .FirstOrDefault();
             return userData;
         }
 

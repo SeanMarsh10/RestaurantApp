@@ -1,8 +1,5 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Microsoft.AspNetCore.Http;
-using NHibernate;
-using NHibernate.Dialect.Schema;
 using NHibernate.Tool.hbm2ddl;
 using RestaurantApp.Entities;
 using RestaurantApp.Interfaces;

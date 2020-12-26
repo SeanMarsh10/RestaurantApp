@@ -125,3 +125,4 @@ C:\Users\seanm\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\
 C:\Users\seanm\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\LogIn.cshtml.g.cs
 C:\Users\seanm\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\RestaurantApp.csprojAssemblyReference.cache
 C:\Users\seanm\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Views\AccountCreation\Index.cshtml.g.cs
+C:\Users\seanm\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Views\MainMenu\Index.cshtml.g.cs

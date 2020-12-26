@@ -31,7 +31,7 @@ namespace NUnitTestProject1
             try
             {
                 UserDataHelper userDataHelper = new UserDataHelper();
-                var user = userDataHelper.GetUserData("DefaultUser");
+                var user = userDataHelper.GetUserData("1234");
 
                 if (user == null)
                 {
