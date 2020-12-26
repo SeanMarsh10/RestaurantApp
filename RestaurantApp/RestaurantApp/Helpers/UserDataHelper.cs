@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FluentNHibernate.Data;
+using Microsoft.Extensions.Logging;
 using NHibernate;
 using RestaurantApp.Entities;
 using RestaurantApp.Models;
@@ -6,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace RestaurantApp.Helpers
 {
@@ -73,6 +73,13 @@ namespace RestaurantApp.Helpers
         {
             Regex regularExpression = new Regex(passwordRegexPatter);
             return regularExpression.IsMatch(password);
+        }
+
+        public override List<Entity> GetAll()
+        {
+            var users = new List<Entity>();
+            users.AddRange(session.Query<UserEntity>().ToList());
+            return users;
         }
     }
 }
